@@ -47,7 +47,7 @@ try {
     $link = $shell.CreateShortcut($linkPath)
     $link.TargetPath = $vlc
     # VLC ya ha demostrado resolver PCTV en esta LAN.
-    $link.Arguments = '--fullscreen --rtsp-tcp "rtsp://PCTV:80/live"'
+    $link.Arguments = '--no-fullscreen --rtsp-tcp "rtsp://PCTV:80/live"'
     $link.WorkingDirectory = Split-Path -Parent $vlc
     $link.IconLocation = $vlc + ',0'
     $link.Description = 'TV Escolar RTSP - VLC - PCTV (TCP)'
