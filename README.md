@@ -89,8 +89,8 @@ Para la red escolar mixta Ethernet y Wi-Fi, esta modalidad evita depender de UDP
 
 ### Instaladores Windows
 
-- [Instalar-TV-Escolar-RTSP-MPV.cmd](instaladores/Instalar-TV-Escolar-RTSP-MPV.cmd): instala MPV si es necesario y crea el acceso directo **TV Escolar (MPV)**. En cada apertura resuelve la IPv4 actual de PCTV mediante PowerShell (priorizando LLMNR/NetBIOS) y abre RTSP por TCP en pantalla completa. El registro se guarda en %LOCALAPPDATA%\TVEscolar\mpv-rtsp.log.
-- [Instalar-TV-Escolar-RTSP-VLC.cmd](instaladores/Instalar-TV-Escolar-RTSP-VLC.cmd): instala VLC si es necesario y crea el acceso directo **TV Escolar (VLC)**, que abre la direccion RTSP por TCP directamente con el nombre PCTV, como ya se comprobo en el centro.
+- [Instalar-TV-Escolar-RTSP-MPV.cmd](instaladores/Instalar-TV-Escolar-RTSP-MPV.cmd): instala MPV si es necesario y crea el acceso directo **TV Escolar (MPV)**. En cada apertura resuelve la IPv4 actual de PCTV mediante PowerShell (priorizando LLMNR/NetBIOS) y abre RTSP por TCP en una ventana normal. El docente puede alternar a pantalla completa pulsando **f**. El registro se guarda en %LOCALAPPDATA%\TVEscolar\mpv-rtsp.log.
+- [Instalar-TV-Escolar-RTSP-VLC.cmd](instaladores/Instalar-TV-Escolar-RTSP-VLC.cmd): instala VLC si es necesario y crea el acceso directo **TV Escolar (VLC)**, que abre la direccion RTSP por TCP en una ventana normal directamente con el nombre PCTV, como ya se comprobo en el centro. El docente puede alternar a pantalla completa haciendo doble clic en el video.
 
 Los dos usan **RTSP en el puerto 80, ruta /live**, con nombre de servidor **PCTV**. Son instaladores independientes; los archivos antiguos de multicast permanecen disponibles. Cada acceso directo se crea en el escritorio del usuario que ejecuta el instalador.
 
