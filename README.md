@@ -79,3 +79,28 @@ La emisión multicasting depende de la infraestructura de red y puede no atraves
 ## Proyecto relacionado
 
 - [VillaCam](https://github.com/efrencd/VillaCam): aplicación Android de cámara inalámbrica para OBS mediante SRT.
+
+
+---
+
+## Distribucion RTSP unicast (OBS RTSP Server)
+
+Para la red escolar mixta Ethernet y Wi-Fi, esta modalidad evita depender de UDP multicast en los puntos de acceso.
+
+### Instaladores Windows
+
+- [Instalar-TV-Escolar-RTSP-MPV.cmd](instaladores/Instalar-TV-Escolar-RTSP-MPV.cmd): instala MPV si es necesario y crea el acceso directo **TV Escolar (MPV)**. En cada apertura resuelve la IPv4 actual de PCTV mediante PowerShell (priorizando LLMNR/NetBIOS) y abre RTSP por TCP en pantalla completa. El registro se guarda en %LOCALAPPDATA%\TVEscolar\mpv-rtsp.log.
+- [Instalar-TV-Escolar-RTSP-VLC.cmd](instaladores/Instalar-TV-Escolar-RTSP-VLC.cmd): instala VLC si es necesario y crea el acceso directo **TV Escolar (VLC)**, que abre la direccion RTSP por TCP directamente con el nombre PCTV, como ya se comprobo en el centro.
+
+Los dos usan **RTSP en el puerto 80, ruta /live**, con nombre de servidor **PCTV**. Son instaladores independientes; los archivos antiguos de multicast permanecen disponibles. Cada acceso directo se crea en el escritorio del usuario que ejecuta el instalador.
+
+### Configuracion de OBS
+
+En el equipo PCTV, activar el plugin OBS RTSP Server, el audio y el video H.264, usar el puerto **80** y la ruta **live**, desactivar multicast e iniciar el servidor. La direccion completa es **rtsp://PCTV:80/live**.
+
+### Diagnostico y requisitos
+
+MPV no resolvia el nombre PCTV con FFmpeg, aunque Windows pudo resolver una IPv4 mediante Resolve-DnsName. El nuevo lanzador consulta la IP cada vez; si no puede encontrarla, muestra un aviso. VLC usa el nombre directamente porque funciono en las pruebas. Si cambia el nombre, puerto o ruta del servidor, sera necesario actualizar los scripts.
+
+Los scripts dependen de WinGet para instalar software ausente y pueden estar sujetos a las politicas del equipo. No modifican el cortafuegos, OBS ni los equipos Huawei. Probar primero con un equipo cableado y otro Wi-Fi, y despues con los 10–11 receptores. **No se ha verificado su ejecucion real en Windows gestionado por la Consejeria**.
+
