@@ -100,7 +100,7 @@ try {
         throw ('No se encuentra MPV: ' + $mpvExe + '. Ejecuta otra vez el instalador.')
     }
     $url = 'rtsp://' + $ip + ':' + $port + '/' + $streamPath
-    & $mpvExe '--fs' '--rtsp-transport=tcp' '--profile=low-latency' ('--log-file=' + $logFile) $url
+    & $mpvExe '--no-fs' '--rtsp-transport=tcp' '--profile=low-latency' ('--log-file=' + $logFile) $url
 } catch {
     Show-Error ([string]$_)
     exit 1
